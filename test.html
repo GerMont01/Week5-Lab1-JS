@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script>
+            function CapitalizeText(){
+                var string = document.getElementById("input1").value;
+                result = string.toUpperCase();
+                document.getElementById("result1").innerHTML = result;
+            }
+            
+            function GuessNumber(){
+                var usernumber = parseInt(document.getElementById("input2").value);
+                if (usernumber < 0 || usernumber > 10){
+                    text ="The number should be between 0 and 10!";
+                }
+                else {
+                    var random = Math.floor(Math.random() * 11);
+                    if (random == usernumber) { 
+                        text="You guessed right";
+                    }
+                    else {
+                        text= "wrong, right answer is: " + random;
+                    }
+                }
+                document.getElementById("result2").innerHTML = text;
+            }
+
+            function Replace2(){
+                var numbers = [
+                    parseInt(document.getElementById("input3").value),
+                    parseInt(document.getElementById("input4").value),
+                    parseInt(document.getElementById("input5").value),
+                    parseInt(document.getElementById("input6").value)
+                ]
+                for (i=0;i<numbers.length;i++){
+                    if (numbers[i] == 2){
+                        numbers[i] = Math.floor(Math.random() * 100);
+                    }
+                }
+                document.getElementById("result3").innerHTML = numbers;
+            }
+
+            function Sort(){
+                var sortingNumbers = [
+                    parseInt(document.getElementById("input7").value),
+                    parseInt(document.getElementById("input8").value),
+                    parseInt(document.getElementById("input9").value),
+                    parseInt(document.getElementById("input10").value)
+                ]
+                sortingNumbers.sort(function(a, b){return a-b});
+                document.getElementById("result4").innerHTML = sortingNumbers;
+            }
+
+            function Reverse(){
+                var revString = document.getElementById("input11").value;
+                revString.split("").reverse();
+                reversed = revString.split("").reverse().join("");
+                document.getElementById("result5").innerHTML = reversed;
+            }
+
+            function Order(){
+                var person = {firstName:"John", lastName:"Doe", age:46};
+                var costumer = [
+                    {
+                        name: document.getElementById("input12").value,
+                        email: document.getElementById("input13").value,
+                        order: parseInt(document.getElementById("input14").value)
+                    },
+                    {
+                        name: document.getElementById("input15").value,
+                        email: document.getElementById("input16").value,
+                        order: parseInt(document.getElementById("input17").value)
+                    },
+                    {
+                        name: document.getElementById("input18").value,
+                        email: document.getElementById("input19").value,
+                        order: parseInt(document.getElementById("input20").value)
+                    }
+                ]
+                maxorder = Math.max(costumer[0].order,costumer[1].order,costumer[2].order);
+                for (i=0;i<3;i++){
+                    if (maxorder == costumer[i].order){
+                        var hclient = "The client with the highest order is:" + costumer[i].name;
+                    }
+                }
+
+                document.getElementById("result6").innerHTML = hclient;
+            }
+            
+        </script>
+    </head>
+    <body>
+        <div>
+            <h1>Capitalize all Letters!</h1>
+            <form>
+                Write a text: <input type="text" name="text" id="input1"><br>
+            </form>
+            <button type="button" onclick="CapitalizeText()"> Capitalize </button>
+            <p id="result1"></p>
+        </div>
+        
+        <div>
+            <h1>Guess the random number!!</h1>
+            <form>
+                Put a number from 1 to 10: <input type="number" name="usernumber" id="input2"><br>
+            </form>
+            <button type="button" onclick="GuessNumber()"> Guess </button>
+            <p id="result2"></p>
+        </div>
+        
+        <div>
+            <h1>Replace all number "2"!</h1>
+            <form>
+                Put first number: <input type="number" name="number1" id="input3"><br>
+                Put second number: <input type="number" name="number2" id="input4"><br>
+                Put third number: <input type="number" name="number3" id="input5"><br>
+                Put forth number: <input type="number" name="number4" id="input6"><br>
+            </form>
+            <button type="button" onclick="Replace2()"> Replace </button>
+            <p id="result3"></p>
+        </div>
+
+        <div>
+            <h1>Sort all numbers!</h1>
+            <form>
+                Put first number: <input type="number" name="sort1" id="input7"><br>
+                Put second number: <input type="number" name="sort2" id="input8"><br>
+                Put third number: <input type="number" name="sort3" id="input9"><br>
+                Put forth number: <input type="number" name="sort4" id="input10"><br>
+            </form>
+            <button type="button" onclick="Sort()"> Sort </button>
+            <p id="result4"></p>
+        </div>
+        
+        <div>
+            <h1>Reverse your text!</h1>
+            <form>
+                Write a text: <input type="text" name="text" id="input11"><br>
+            </form>
+            <button type="button" onclick="Reverse()"> Reverse </button>
+            <p id="result5"></p>
+        </div>
+        
+        <div>
+            <h1>Enter the data and get client with highest order!</h1>
+            <form>
+                Client 1:<br>
+                Name: <input type="text" name="name1" id="input12"><br>
+                E-mail: <input type="text" name="e-mail1" id="input13"><br>
+                Order: <input type="number" name="order1" id="input14"><br>
+                Client 2:<br>
+                Name: <input type="text" name="name2" id="input15"><br>
+                E-mail: <input type="text" name="e-mail2" id="input16"><br>
+                Order: <input type="number" name="order2" id="input17"><br>
+                Client 3:<br>
+                Name: <input type="text" name="name3" id="input18"><br>
+                E-mail: <input type="text" name="e-mail3" id="input19"><br>
+                Order: <input type="number" name="order3" id="input20"><br>
+            </form>
+            <button type="button" onclick="Order()"> Get highest Order </button>
+            <p id="result6"></p>
+        </div>
+        
+    </body>
+</html>
